@@ -16,9 +16,6 @@ class MultiplicationLibConan(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
-        
-    def requirements(self):
-        self.requires("fmt/10.1.1")  # Specify the fmt version you want to use
 
     def package(self):
         # Copy header files to the package's include folder
