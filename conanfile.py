@@ -5,17 +5,25 @@ import os
 
 class MultiplicationLibConan(ConanFile):
     name = "multiplication_lib"
-    version = "1.0"
+    version = "2.0"
     license = "MIT"
     description = "A simple multiplication library"
     settings = "os", "compiler", "build_type", "arch"
     generators = "CMakeToolchain", "CMakeDeps"
     exports_sources = "src/*", "CMakeLists.txt"
 
+    def layout(self):
+        self.folders.source = "."
+        self.folders.build = "__build"
+        self.folders.generators = "__build"
+    
     def build(self):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
+    
+    def requirements(self):
+        self.requires("fmt/10.2.1")  # Specify the fmt version you want to use
 
     def package(self):
         # Copy header files to the package's include folder

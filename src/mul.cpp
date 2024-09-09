@@ -1,7 +1,7 @@
 #include "mul.h"
-#include <iostream>
+#include <fmt/core.h>  // Include fmt header
 
 int multiply(int a, int b) {
-    std::cout << "LOGGING [mul.cpp]: Multiplying " << a << " and " << b << std::endl;
+    fmt::print("LOGGING [mul.cpp]: Multiplying {} and {}\n", a, b);
     return a * b;
 }
